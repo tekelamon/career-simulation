@@ -42,12 +42,12 @@ const addNewPlayer = async (playerObj) => {
                 body: JSON.stringify({
                     name: playerObj.name,
                     breed: playerObj.breed,
+                    status: playerObj.status,
                     imageUrl: playerObj.imageUrl,
+                    teamId: playerObj.teamId,
                 }),
             }
         );
-        // TODO add other player data above here
-        // unsure if playerObj data needs ${} or not...
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
     }
@@ -122,7 +122,15 @@ const renderAllPlayers = (playerList) => {
  */
 const renderNewPlayerForm = () => {
     try {
-        // TODO create new players here
+//      const div = document.createElement('div');
+//      div.innerHTML = `
+//      `;
+
+//      newPlayerFormContainer.appendChild(div);
+
+// TODO move form rendering to js instead of HTML ( started there for easy visualization )
+// TODO get data from form, and create player obj for addNewPlayer
+
     } catch (err) {
         console.error('Uh oh, trouble rendering the new player form!', err);
     }
@@ -130,9 +138,9 @@ const renderNewPlayerForm = () => {
 
 /**
  * Final task list:
- * make form to render new players
- * add new players to API
+ * finish renderNewPlayerForm
  * display details of specific players ( details button returns data, does not render )
+ *      ^^^ new render function for single players' details or use renderAllPlayers with just 1 player?
  */
 const init = async () => {
     const players = await fetchAllPlayers();

@@ -18,7 +18,31 @@
 <body>
 
   <!-- form to add new players -->
-  <div id="new-player-form"></div>
+  <div id="new-player-form">
+    <h1>Add New Players!</h1>
+    <form>
+      <label>Name:</label>
+      <input type="" name="playerName">
+
+      <label>Breed:</label>
+      <input type="" name="breed">
+
+      <label>Status</label>
+      <select name="status">
+        <option value="benched" selected="selected"></option>
+        <option value="field"></option>
+      </select>
+
+      <label>Where can we find a picture?</label>
+      <input type="" name="image">
+
+      <label>Which team are they playing for?</label>
+      <select name="team">
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+    </form>
+  </div>
 
   <!-- container for all players -->
   <div id="all-players-container"></div>
