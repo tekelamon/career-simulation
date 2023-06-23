@@ -33,19 +33,21 @@ const fetchSinglePlayer = async (playerId) => {
 const addNewPlayer = async (playerObj) => {
     try {
         const response = await fetch(
-      `${APIURL}/players`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: playerObj.name,
-          breed: playerObj.breed,
-        }),
-      }
-    ); // TODO add other player data above here
-    // unsure if playerObj data needs ${} or not...
+            `${APIURL}/players`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: playerObj.name,
+                    breed: playerObj.breed,
+                    imageUrl: playerObj.imageUrl,
+                }),
+            }
+        );
+        // TODO add other player data above here
+        // unsure if playerObj data needs ${} or not...
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
     }
