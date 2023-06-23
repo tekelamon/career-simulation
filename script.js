@@ -96,10 +96,16 @@ const renderAllPlayers = (playerList) => {
                 <img src="${player.imageUrl}">
                 <h2>${player.name}</h2>
                 <p>${player.breed}</p>
-                <button class="details-button">See details</button>
-                <button class="delete-button">Remove from roster</button>
+                <button
+                    class="details-button"
+                    value="${player.id}"
+                    onclick="fetchSinglePlayer(this.value)">See details</button>
+                <button
+                    class="delete-button"
+                    value="${player.id}"
+                    onclick="removePlayer(this.value)">Remove from roster</button>
             `;
-            // TODO add event listeners to buttons
+
             playerContainer.appendChild(div);
         });
     } catch (err) {
@@ -120,6 +126,12 @@ const renderNewPlayerForm = () => {
     }
 }
 
+/**
+ * Final task list:
+ * make form to render new players
+ * add new players to API
+ * display details of specific players ( details button returns data, does not render )
+ */
 const init = async () => {
     const players = await fetchAllPlayers();
     console.log(players);
