@@ -45,6 +45,7 @@ const addNewPlayer = async (playerObj) => {
         }),
       }
     ); // TODO add other player data above here
+    // unsure if playerObj data needs ${} or not...
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
     }
@@ -88,9 +89,19 @@ const removePlayer = async (playerId) => {
  */
 const renderAllPlayers = (playerList) => {
     try {
-        /*
-            use playerContainer and add each item from playerList
-        */
+        playerList.forEach( player => {
+            const div = document.createElement('div');
+            div.classList = 'player';
+            div.innerHTML = `
+                <img src="${player.imageUrl}">
+                <h2>${player.name}</h2>
+                <p>${player.breed}</p>
+                <button class="details-button">See details</button>
+                <button class="delete-button">Remove from roster</button>
+            `;
+            // TODO add event listeners to buttons
+            playerContainer.appendChild(div);
+        });
     } catch (err) {
         console.error('Uh oh, trouble rendering players!', err);
     }
@@ -103,7 +114,7 @@ const renderAllPlayers = (playerList) => {
  */
 const renderNewPlayerForm = () => {
     try {
-        
+        // TODO create new players here
     } catch (err) {
         console.error('Uh oh, trouble rendering the new player form!', err);
     }
