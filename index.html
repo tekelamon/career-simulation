@@ -20,27 +20,35 @@
   <!-- form to add new players -->
   <div id="new-player-form">
     <h1>Add New Players!</h1>
-    <form>
-      <label>Name:</label>
-      <input type="" name="playerName">
+    <form onsubmit="return addNewPlayer()">
+      <div>
+        <label for="playerName">Name:</label>
+        <input type="text" name="playerName" id="playerName">
+      </div>
 
-      <label>Breed:</label>
-      <input type="" name="breed">
+      <div>
+        <label for="playerBreed">Breed:</label>
+        <input type="text" name="breed" id="playerBreed">
+      </div>
 
-      <label>Status</label>
-      <select name="status">
-        <option value="benched" selected="selected"></option>
-        <option value="field"></option>
-      </select>
+      <div>
+        <label for="playerImgUrl">Where can we find a picture?</label>
+        <input type="url" name="image" id="playerImgUrl">
+      </div>
 
-      <label>Where can we find a picture?</label>
-      <input type="" name="image">
+      <div>
+        <label>Which team are they playing for?</label>
+        <input type="radio" name="team" value="">
+        <input type="radio" name="team" value="">
+      </div>
 
-      <label>Which team are they playing for?</label>
-      <select name="team">
-        <option value=""></option>
-        <option value=""></option>
-      </select>
+      <div>
+        <label for="playerStatus">Status</label>
+        <select name="status" id="playerStatus">
+          <option value="benched" selected="selected"></option>
+          <option value="field"></option>
+        </select>
+      </div>
     </form>
   </div>
 

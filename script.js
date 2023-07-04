@@ -1,7 +1,6 @@
 const playerContainer = document.getElementById('all-players-container');
 const newPlayerFormContainer = document.getElementById('new-player-form');
 
-// Add your cohort name to the cohortName variable below, replacing the 'COHORT-NAME' placeholder
 const cohortName = '2302-acc-pt-web-pt-e';
 // Use the APIURL variable for fetch requests
 const APIURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/`;
@@ -30,8 +29,19 @@ const fetchSinglePlayer = async (playerId) => {
     }
 };
 
-const addNewPlayer = async (playerObj) => {
+/*
+    Gets data from form submission for addNewPlayer
+*/
+const getFormPlayerData = () => {
+    let playerObj = {};
+    // TODO for each field, get from form, add to object
+    return playerObj;
+}
+
+// const addNewPlayer = async (playerObj) => {
+const addNewPlayer = async () => {
     try {
+        const playerObj = getFormPlayerData();
         const response = await fetch(
             `${APIURL}/players`,
             {
@@ -48,6 +58,7 @@ const addNewPlayer = async (playerObj) => {
                 }),
             }
         );
+        return false; // response for form
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
     }
@@ -107,6 +118,7 @@ const renderAllPlayers = (playerList) => {
                     value="${player.id}"
                     onclick="removePlayer(this.value)">Remove from roster</button>
             `;
+            // TODO replace fetchSinglePlayer with renderSinglePlayer
 
             playerContainer.appendChild(div);
         });
@@ -139,12 +151,10 @@ const renderNewPlayerForm = () => {
 /**
  * Final task list:
  * finish renderNewPlayerForm
- * display details of specific players ( details button returns data, does not render )
- *      ^^^ new render function for single players' details or use renderAllPlayers with just 1 player?
+ * create renderSinglePlayer for fetchSinglePlayer (will be used to show player details)
  */
 const init = async () => {
     const players = await fetchAllPlayers();
-    console.log(players);
     renderAllPlayers(players);
 
     renderNewPlayerForm();
