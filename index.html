@@ -18,39 +18,7 @@
 <body>
 
   <!-- form to add new players -->
-  <div id="new-player-form">
-    <h1>Add New Players!</h1>
-    <form onsubmit="return addNewPlayer()">
-      <div>
-        <label for="playerName">Name:</label>
-        <input type="text" name="playerName" id="playerName">
-      </div>
-
-      <div>
-        <label for="playerBreed">Breed:</label>
-        <input type="text" name="breed" id="playerBreed">
-      </div>
-
-      <div>
-        <label for="playerImgUrl">Where can we find a picture?</label>
-        <input type="url" name="image" id="playerImgUrl">
-      </div>
-
-      <div>
-        <label>Which team are they playing for?</label>
-        <input type="radio" name="team" value="">
-        <input type="radio" name="team" value="">
-      </div>
-
-      <div>
-        <label for="playerStatus">Status</label>
-        <select name="status" id="playerStatus">
-          <option value="benched" selected="selected"></option>
-          <option value="field"></option>
-        </select>
-      </div>
-    </form>
-  </div>
+  <div id="new-player-form"></div>
 
   <!-- container for all players -->
   <div id="all-players-container"></div>

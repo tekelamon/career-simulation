@@ -33,8 +33,18 @@ const fetchSinglePlayer = async (playerId) => {
     Gets data from form submission for addNewPlayer
 */
 const getFormPlayerData = () => {
-    let playerObj = {};
-    // TODO for each field, get from form, add to object
+    const playerName = document.getElementById('playerName');
+    const playerBreed = document.getElementById('playerBreed');
+    const playerStatus = document.getElementById('playerStatus');
+    const playerImg = document.getElementById('playerImgUrl');
+
+    let playerObj = {
+        name: playerName.value,
+        breed: playerBreed.value,
+        status: playerStatus.value,
+        imageUrl: playerImg.value
+    };
+
     return playerObj;
 }
 
@@ -53,11 +63,11 @@ const addNewPlayer = async () => {
                     name: playerObj.name,
                     breed: playerObj.breed,
                     status: playerObj.status,
-                    imageUrl: playerObj.imageUrl,
-                    teamId: playerObj.teamId,
+                    imageUrl: playerObj.imageUrl
                 }),
             }
         );
+// TODO I believe this is working properly, verify data and post to API
         return false; // response for form
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
@@ -134,14 +144,40 @@ const renderAllPlayers = (playerList) => {
  */
 const renderNewPlayerForm = () => {
     try {
-//      const div = document.createElement('div');
-//      div.innerHTML = `
-//      `;
+        const div = document.createElement('div');
+        div.innerHTML = `
+            <h1>Add New Players!</h1>
+            <form onsubmit="return addNewPlayer()">
+            <div>
+                <label for="playerName">Name:</label>
+                <input type="text" name="playerName" id="playerName">
+            </div>
 
-//      newPlayerFormContainer.appendChild(div);
+            <div>
+                <label for="playerBreed">Breed:</label>
+                <input type="text" name="breed" id="playerBreed">
+            </div>
 
-// TODO move form rendering to js instead of HTML ( started there for easy visualization )
-// TODO get data from form, and create player obj for addNewPlayer
+            <div>
+                <label for="playerImgUrl">Where can we find a picture?</label>
+                <input type="url" name="image" id="playerImgUrl">
+            </div>
+
+            <div>
+                <label for="playerStatus">Status</label>
+                <select name="status" id="playerStatus">
+                <option value="benched" selected="selected"></option>
+                <option value="field"></option>
+                </select>
+            </div>
+
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+            </form>
+        `;
+
+        newPlayerFormContainer.appendChild(div);
 
     } catch (err) {
         console.error('Uh oh, trouble rendering the new player form!', err);
@@ -150,7 +186,6 @@ const renderNewPlayerForm = () => {
 
 /**
  * Final task list:
- * finish renderNewPlayerForm
  * create renderSinglePlayer for fetchSinglePlayer (will be used to show player details)
  */
 const init = async () => {
