@@ -83,6 +83,7 @@ const renderAllPlayers = (playerList) => {
 
         // parent div to contain all players
         const playerContainer = document.createElement('div');
+        playerContainer.classList = 'playerContainer';
 
         playerList.forEach( player => {
             // each player has their own div to hold their respective data
@@ -113,17 +114,43 @@ const renderAllPlayers = (playerList) => {
  */
 const renderNewPlayerForm = () => {
     try {
-        
+        // base location to send data
+        const root = document.getElementById('root');
+
+        // parent div to contain form
+        const formContainer = document.createElement('div');
+        formContainer.classList = 'formContainer';
+
+        formContainer.innerHTML = `
+            <form>
+                <label>
+                    Name:
+                    <input type='text' id='newPlayerName' />
+                </label>
+                <label>
+                    Breed:
+                    <input type='text' id='newPlayerBreed' />
+                </label>
+                <label>
+                    Where can we find a picture?
+                    <input type='text' id='newPlayerImageUrl' />
+                </label>
+                <input type='submit' value='Add Player' id='newPlayerSubmit' />
+            </form>
+        `;
+
+        // add form to DOM
+        root.appendChild(formContainer);
     } catch (err) {
         console.error('Uh oh, trouble rendering the new player form!', err);
     }
 };
 
 const init = async () => {
+    renderNewPlayerForm();
+
     const players = await fetchAllPlayers();
     renderAllPlayers(players);
-
-    renderNewPlayerForm();
 };
 
 init();
