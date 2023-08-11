@@ -8,8 +8,10 @@
  */
 
 const cohortName = '2302-acc-pt-web-pt-e';
-// API endpoint
+// API endpoints
 const BASEURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/`;
+const PLAYERSURL = `${BASEURL}/players`; // add /${id} to get single player
+const TEAMSURL = `${BASEURL}/teams`;
 
 const fetchAllPlayers = async () => {
     try {
