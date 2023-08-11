@@ -37,9 +37,28 @@ const fetchSinglePlayer = async (playerId) => {
     }
 };
 
-const addNewPlayer = async (playerObj) => {
+const addNewPlayer = async () => {
     try {
+        // get relevant data from form
+        const playerName = document.getElementById('newPlayerName').value;
+        const playerBreed = document.getElementById('newPlayerBreed').value;
+        const playerImageUrl = document.getElementById('newPlayerImageUrl').value;
 
+        // post player info to API
+        const response = await fetch(`${PLAYERSURL}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+                name: `${playerName}`,
+                breed: `${playerBreed}`,
+                status: 'bench',
+                imageUrl: `${playerImageUrl}`
+            })
+        });
+        const result = await response.json();
+        console.log( result );
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
     }
@@ -47,7 +66,11 @@ const addNewPlayer = async (playerObj) => {
 
 const removePlayer = async (playerId) => {
     try {
-
+        const response = await fetch(`${PLAYERSURL}/${playerId}`,{
+            method: 'DELETE'
+        });
+        const result = await response.json();
+        console.log( result );
     } catch (err) {
         console.error(
             `Whoops, trouble removing player #${playerId} from the roster!`,
