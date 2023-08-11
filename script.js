@@ -2,9 +2,6 @@
  * REQUIREMENTS:
  * 
  * Display all players in card elements
- * View single player details
- * Add players with form submission
- * Remove players with button on respective card
  */
 
 const cohortName = '2302-acc-pt-web-pt-e';
@@ -113,6 +110,7 @@ const renderAllPlayers = (playerList) => {
                 <img src="${player.imageUrl}" alt="Picture of ${player.name}" />
                 <h1>${player.name}</h1>
                 <p>${player.breed}</p>
+                <button onClick="renderSinglePlayer(${player.id})" >View Player Details</button>
                 <button onClick="removePlayer(${player.id})" >Remove Player</button>
             `;
 
@@ -170,6 +168,68 @@ const renderNewPlayerForm = () => {
         })
     } catch (err) {
         console.error('Uh oh, trouble rendering the new player form!', err);
+    }
+};
+
+const renderSinglePlayer = async (playerId) => {
+    try {
+        // get player data
+        const player = await fetchSinglePlayer(playerId);
+
+        // grab main content
+        const root = document.getElementById('root');
+        // then, clear content for rendering of single player
+        root.innerHTML = '';
+
+        // container for single player content
+        const div = document.createElement('div');
+        div.classList = 'singlePlayerDetails';
+
+        // list to hold names of teammates
+        const ul = document.createElement('ul');
+
+        // take each player on the team, and generate a list of names from each player
+        const teammateNames = player.team.players.map( teammate => {
+            return teammate.name;
+        });
+
+        teammateNames.forEach( name => {
+            // place each name in a li
+            const li = document.createElement('li');
+            li.innerHTML = `${name}`;
+            // add each name to the full list
+            ul.appendChild(li);
+        })
+
+        // update div content
+        div.innerHTML = `
+            <h1>${player.name}</h1>
+            <img src="${player.imageUrl}" alt="Picture of ${player.name}" />
+            <p>${player.breed}</p>
+            <p>Location: ${player.status}</p>
+            <p>Team: ${player.team.name}</p>
+        `;
+
+        // add the list of names to the player's details
+        div.appendChild(ul);
+
+        // button to close view
+        const btn = document.createElement('button');
+        btn.innerHTML = 'Close';
+
+        // add button to div
+        div.appendChild(btn);
+
+        // attach entire div to root
+        root.appendChild(div);
+
+        // on close, remove player details, and re-run init function to return main page
+        btn.addEventListener('click', () => {
+            root.innerHTML = '';
+            init();
+        });
+    } catch (err) {
+        console.error('Trouble rendering single player',err);
     }
 };
 
