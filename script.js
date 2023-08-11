@@ -78,7 +78,29 @@ const removePlayer = async (playerId) => {
  */
 const renderAllPlayers = (playerList) => {
     try {
-        
+        // base location to send data
+        const root = document.getElementById('root');
+
+        // parent div to contain all players
+        const playerContainer = document.createElement('div');
+
+        playerList.forEach( player => {
+            // each player has their own div to hold their respective data
+            const div = document.createElement('div');
+            div.classList = 'player';
+
+            div.innerHTML = `
+                <img src="${player.imageUrl}" alt="Picture of ${player.name}" />
+                <h1>${player.name}</h1>
+                <p>${player.breed}</p>
+            `;
+
+            // attach player to parent div
+            playerContainer.appendChild(div);
+        });
+
+        // finally, add all players to DOM
+        root.appendChild(playerContainer);
     } catch (err) {
         console.error('Uh oh, trouble rendering players!', err);
     }
