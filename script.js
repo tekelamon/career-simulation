@@ -15,7 +15,11 @@ const TEAMSURL = `${BASEURL}/teams`;
 
 const fetchAllPlayers = async () => {
     try {
-
+        // fetch data
+        const response = await fetch(PLAYERSURL);
+        const data = await response.json();
+        // return relevant data from full object
+        return data.data.players;
     } catch (err) {
         console.error('Uh oh, trouble fetching players!', err);
     }
@@ -23,7 +27,11 @@ const fetchAllPlayers = async () => {
 
 const fetchSinglePlayer = async (playerId) => {
     try {
-
+        // fetch data
+        const response = await fetch(`${PLAYERSURL}/${playerId}`);
+        const data = await response.json();
+        // return relevant data from full object
+        return data.data.player;
     } catch (err) {
         console.error(`Oh no, trouble fetching player #${playerId}!`, err);
     }
