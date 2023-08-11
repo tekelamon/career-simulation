@@ -1,4 +1,13 @@
-const cohortName = 'YOUR COHORT NAME HERE';
+/**
+ * REQUIREMENTS:
+ * 
+ * Display all players in card elements
+ * View single player details
+ * Add players with form submission
+ * Remove players with button on respective card
+ */
+
+const cohortName = '2302-acc-pt-web-pt-e';
 // API endpoint
 const BASEURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/`;
 
