@@ -57,8 +57,6 @@ const addNewPlayer = async () => {
                 imageUrl: `${playerImageUrl}`
             })
         });
-        const result = await response.json();
-        console.log( result );
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
     }
@@ -69,8 +67,6 @@ const removePlayer = async (playerId) => {
         const response = await fetch(`${PLAYERSURL}/${playerId}`,{
             method: 'DELETE'
         });
-        const result = await response.json();
-        console.log( result );
     } catch (err) {
         console.error(
             `Whoops, trouble removing player #${playerId} from the roster!`,
@@ -117,6 +113,7 @@ const renderAllPlayers = (playerList) => {
                 <img src="${player.imageUrl}" alt="Picture of ${player.name}" />
                 <h1>${player.name}</h1>
                 <p>${player.breed}</p>
+                <button onClick="removePlayer(${player.id})" >Remove Player</button>
             `;
 
             // attach player to parent div
@@ -158,12 +155,19 @@ const renderNewPlayerForm = () => {
                     Where can we find a picture?
                     <input type='text' id='newPlayerImageUrl' />
                 </label>
-                <input type='submit' value='Add Player' id='newPlayerSubmit' />
+                <button id='newPlayerSubmit' >Add Player</button>
             </form>
         `;
 
         // add form to DOM
         root.appendChild(formContainer);
+
+        // add event listener to button
+        const btn = document.getElementById('newPlayerSubmit');
+        btn.addEventListener('click', (event) => {
+            event.preventDefault();
+            addNewPlayer();
+        })
     } catch (err) {
         console.error('Uh oh, trouble rendering the new player form!', err);
     }
