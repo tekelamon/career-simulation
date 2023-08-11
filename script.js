@@ -112,6 +112,7 @@ const removePlayer = async (playerId) => {
  */
 const renderAllPlayers = (playerList) => {
     try {
+        playerContainer.innerHTML = ``;
         playerList.forEach( player => {
             const div = document.createElement('div');
             div.classList = 'player';
@@ -137,6 +138,13 @@ const renderAllPlayers = (playerList) => {
     }
 };
 
+const renderSinglePlayer = async ( playerId ) => {
+    // fetch data
+    // clear screen
+    // display new content
+    // on close button, run init() to bring main page back
+};
+
 
 /**
  * It renders a form to the DOM, and when the form is submitted, it adds a new player to the database,
@@ -144,6 +152,7 @@ const renderAllPlayers = (playerList) => {
  */
 const renderNewPlayerForm = () => {
     try {
+        newPlayerFormContainer.innerHTML = ``;
         const div = document.createElement('div');
         div.innerHTML = `
             <h1>Add New Players!</h1>
