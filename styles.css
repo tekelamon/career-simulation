@@ -1,7 +1,15 @@
+/* general styles */
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+button {
+  width: 8rem;
+  height: 1.7rem;
+  border-radius: 9px;
+  margin: 0.5rem auto 0 auto;
 }
 
 /* styling for form */
@@ -29,11 +37,35 @@
   padding: 0.3rem;
 }
 
-#newPlayerSubmit {
-  width: 8rem;
-  height: 1.7rem;
-  border-radius: 9px;
-  margin: 0.5rem auto 0 auto;
+/* styling for player container */
+.playerContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0.5rem;
+}
+
+.playerContainer > h1 {
+  /* block and full width to ensure full line for title */
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* styles for individual players */
+.player {
+  margin: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(30, 100%, 68%);
+  border-radius: 8px;
+
+  max-width: 225px;
+}
+
+.player > h1, .player > p {
+  text-align: center;
 }
 
 .player img {

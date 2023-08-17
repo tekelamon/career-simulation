@@ -101,6 +101,10 @@ const renderAllPlayers = (playerList) => {
         const playerContainer = document.createElement('div');
         playerContainer.classList = 'playerContainer';
 
+        playerContainer.innerHTML = `
+            <h1>Meet Our Players</h1>
+        `;
+
         playerList.forEach( player => {
             // each player has their own div to hold their respective data
             const div = document.createElement('div');
