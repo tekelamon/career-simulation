@@ -139,6 +139,7 @@ const renderNewPlayerForm = () => {
         formContainer.classList = 'formContainer';
 
         formContainer.innerHTML = `
+            <h1>Add New Players!</h1>
             <form>
                 <label>
                     Name:

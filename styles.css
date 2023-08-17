@@ -4,6 +4,38 @@
   box-sizing: border-box;
 }
 
+/* styling for form */
+.formContainer {
+  background-color: lightgray;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.formContainer h1 {
+  text-align: center;
+  width: 85%;
+  margin: 0 auto;
+  border-bottom: 1px solid black;
+}
+
+.formContainer form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.formContainer form label {
+  padding: 0.3rem;
+}
+
+#newPlayerSubmit {
+  width: 8rem;
+  height: 1.7rem;
+  border-radius: 9px;
+  margin: 0.5rem auto 0 auto;
+}
+
 .player img {
   height: 200px;
   width: 200px;
