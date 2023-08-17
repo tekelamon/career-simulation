@@ -12,7 +12,7 @@ button {
   margin: 0.5rem auto 0 auto;
 }
 
-/* styling for form */
+/* form */
 .formContainer {
   background-color: lightgray;
   padding: 1rem;
@@ -37,7 +37,7 @@ button {
   padding: 0.3rem;
 }
 
-/* styling for player container */
+/* player container */
 .playerContainer {
   display: flex;
   flex-flow: row wrap;
@@ -52,7 +52,7 @@ button {
   text-align: center;
 }
 
-/* styles for individual players */
+/* individual players */
 .player {
   margin: 0.5rem;
   padding: 0.5rem 0.8rem;
@@ -71,4 +71,49 @@ button {
 .player img {
   height: 200px;
   width: 200px;
+}
+
+/* player details screen */
+.singlePlayerDetails {
+  width: 90%;
+  margin: 1.5rem auto;
+  padding: 0.5rem;
+  background-color: hsl(30, 100%, 68%);
+  border-radius: 8px;
+}
+
+.singlePlayerDetails > h1,
+.singlePlayerDetails > p {
+  text-align: center;
+}
+
+.singlePlayerDetails > img {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: 0 auto 0.7rem auto;
+}
+
+.singlePlayerDetails > p:last-of-type {
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.singlePlayerDetails > ul {
+  list-style-type: none;
+  margin-left: 4rem;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.singlePlayerDetails ul li {
+  display: inline;
+  width: 25%;
+}
+
+.singlePlayerDetails > button {
+  display: block;
+  margin: 1rem auto;
 }
